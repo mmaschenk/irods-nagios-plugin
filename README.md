@@ -4,9 +4,11 @@ This script can be used by a [nagios server](https://www.nagios.org/) to test th
 
 ## installation
 
-Create a virtual python environment for the script and install the requirements:
+Checkout this repo and create a virtual python environment for the script and install the requirements:
 
 ```shell
+% git clone https://github.com/mmaschenk/irods-nagios-plugin.git
+% cd irods-nagios-plugin
 % python -m venv .venv
 % . .venv/bin/activate
 % pip install -r requirements.txt
