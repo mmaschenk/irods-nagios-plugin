@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# This file is part of irods-nagios-plugin.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from irods.session import iRODSSession
 from irods.connection import Connection
 import os
