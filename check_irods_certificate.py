@@ -10,6 +10,7 @@ import re
 import sys
 import argparse
 from cryptography import  x509
+from cryptography.x509.extensions import SubjectAlternativeName, DNSName
 from datetime import datetime, timezone
 
 
@@ -38,6 +39,14 @@ def check_for_cert_name_and_expiration(irods_host, ssl_settings, port=1247, chec
             print(f"Certificate ends:       {cert.not_valid_after_utc:%d-%m-%Y}")
             print(f"Certificate starts:     {cert.not_valid_before_utc:%d-%m-%Y}")
             print(f"Certificate expires in: {lifetime.days} days")
+
+            try:
+                alt = cert.extensions.get_extension_for_class(SubjectAlternativeName).value
+
+                for dns in alt.get_values_for_type(DNSName):
+                    print(f"Certificate alt name:   {dns}")
+            except:
+                print("No alt names found")
 
         error = 0
         if (hostname != checkname):
